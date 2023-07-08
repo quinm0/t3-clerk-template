@@ -1,9 +1,18 @@
+import { SignInButton, SignOutButton, SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 import Head from "next/head";
 import Link from "next/link";
 import { api } from "~/utils/api";
 
 export default function Home() {
+
+  const {
+    isSignedIn,
+  } = useUser();
+
+  console.log('is signed in ', isSignedIn,)
+
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const protectedHello = api.example.authedHello.useQuery();
 
   return (
     <>
@@ -41,8 +50,25 @@ export default function Home() {
               </div>
             </Link>
           </div>
+          <div>
+            <SignedIn>
+              <SignOutButton />
+            </SignedIn>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+          </div>
           <p className="text-2xl text-white">
             {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+          </p>
+          <p className="text-2xl text-white">
+            {
+              protectedHello.data ? 
+                protectedHello.data.greeting : 
+                protectedHello.error ?
+                  `You are not logged in. Error: ${protectedHello.error.message}` :
+                  "Loading protected tRPC query..."
+            }
           </p>
         </div>
       </main>
