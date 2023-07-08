@@ -6,8 +6,8 @@
  * TL;DR - This is where all the tRPC server stuff is created and plugged in. The pieces you will
  * need to use are documented accordingly near the end.
  */
-import { getAuth, type SignedInAuthObject, type SignedOutAuthObject } from "@clerk/nextjs/dist/types/server";
-import { initTRPC } from "@trpc/server";
+import { type SignedInAuthObject, type SignedOutAuthObject, getAuth } from "@clerk/nextjs/server";
+import { initTRPC, TRPCError } from "@trpc/server";
 import { type CreateNextContextOptions } from "@trpc/server/adapters/next";
 import superjson from "superjson";
 import { ZodError } from "zod";
@@ -103,8 +103,10 @@ const isAuthed = t.middleware(({
   next,
   ctx
 }) => {
-  if (!ctx.auth) {
-    throw new Error("Not authorized");
+  if (!ctx.auth || !ctx.auth.userId) {
+    throw new TRPCError({
+      code: "UNAUTHORIZED",
+    });
   }
   return next({
     ctx: {
