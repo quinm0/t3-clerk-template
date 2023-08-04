@@ -13,6 +13,7 @@
     "@clerk/clerk-react": "^4.22.0",
     "@clerk/nextjs": "^4.21.14",
     "@prisma/client": "^4.14.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-nextjs": "^0.3.1",
     "@tanstack/react-query": "^4.29.7",
     "@trpc/client": "^10.26.0",

@@ -1,6 +1,7 @@
 import { SignInButton, SignOutButton, SignedIn, SignedOut, useUser } from "@clerk/clerk-react";
 import Head from "next/head";
 import Link from "next/link";
+import { Button } from "~/components/ui/button";
 import { api } from "~/utils/api";
 
 export default function Home() {
@@ -38,6 +39,9 @@ export default function Home() {
                 database and authentication.
               </div>
             </Link>
+            <Button>
+              Test button!
+            </Button>
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
               href="https://create.t3.gg/en/introduction"
