@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.0.2",
     "@trpc/client": "^10.38.1",
     "@trpc/react-query": "^10.38.1",
     "@trpc/server": "^10.38.1",
@@ -17,12 +18,17 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "better-sqlite3": "^8.6.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
     "drizzle-orm": "^0.28.5",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "lucide-react": "^0.274.0",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss-animate": "^1.0.7",
     "typescript": "5.2.2"
   },
   "devDependencies": {
